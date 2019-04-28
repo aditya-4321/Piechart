@@ -1,0 +1,140 @@
+<% include partials/header %>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+
+<script>
+    $(function () {    
+
+    // Create the chart
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Basic drilldown'
+        },
+        xAxis: {
+            type: 'category'
+        },
+
+        legend: {
+            enabled: true
+        },
+
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    style: {
+                        color: 'white',
+                        textShadow: '0 0 2px black, 0 0 2px black'
+                    }
+                },
+                stacking: 'normal'
+            }
+        },
+
+        series: [{
+            name: 'Things',
+            data: [{
+                name: 'Animals',
+                y: 5,
+                drilldown: 'animals'
+            }, {
+                name: 'Fruits',
+                y: 2,
+                drilldown: 'fruits'
+            }, {
+                name: 'Cars',
+                y: 4,
+                drilldown: 'cars'
+            }]
+        }, {
+            name: 'Things2',
+            data: [{
+                name: 'Animals',
+                y: 1,
+                drilldown: 'animals2'
+            }, {
+                name: 'Fruits',
+                y: 5,
+                drilldown: 'fruits2'
+            }, {
+                name: 'Cars',
+                y: 2,
+                drilldown: 'cars2'
+            }]
+        }],
+        drilldown: {
+            activeDataLabelStyle: {
+                color: 'white',
+                textShadow: '0 0 2px black, 0 0 2px black'
+            },
+            series: [{
+                id: 'animals',
+                name: 'Animals',
+                data: [
+                    ['Cats', 4],
+                    ['Dogs', 2],
+                    ['Cows', 1],
+                    ['Sheep', 2],
+                    ['Pigs', 1]
+                ]
+            }, {
+                id: 'fruits',
+                name: 'Fruits',
+                data: [
+                    ['Apples', 4],
+                    ['Oranges', 2]
+                ]
+            }, {
+                id: 'cars',
+                name: 'Cars',
+                data: [
+                    ['Toyota', 4],
+                    ['Opel', 2],
+                    ['Volkswagen', 2]
+                ]
+            },{
+                id: 'animals2',
+                name: 'Animals2',
+                data: [
+                    ['Cats', 3],
+                    ['Dogs', 5],
+                    ['Cows', 6],
+                    ['Sheep', 2],
+                    ['Pigs', 2]
+                ]
+            }, {
+                id: 'fruits2',
+                name: 'Fruits2',
+                data: [
+                    ['Apples', 1],
+                    ['Oranges', 5]
+                ]
+            }, {
+                id: 'cars2',
+                name: 'Cars2',
+                data: [
+                    ['Toyota', 2],
+                    ['Opel', 3],
+                    ['Volkswagen', 2]
+                ]
+            }]
+        }
+    })
+});
+
+
+
+
+
+
+</script>
+
+
+
+<% include partials/footer %>
